@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Home</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename ='css/style.css') }}">
+    </head>
+   
+    <body>
+        <div class="container">
+          <h1 align="center">Analisis Sentimen Pada Media Sosial Twitter Terhadap Kebijakan Pemindahan Ibukota Negara</h1>
+            <form>
+                <p>
+                    Pemerintah Indonesia mengeluarkan wacana pemindahan ibukota negara Indonesia pada tanggal 29 April 2019. Ibukota negara direncanakan akan dipindah ke pulau Kalimantan. Kebijakan pemindahan ibukota negara tersebut menuai banyak sekali respon dari masyarakat, termasuk media sosial termasuk twitter. Respon masyarakat dalam kebijakan pemindahan ibukota negara dapat digunakan sebagai pertimbangan pemerintah dengan cara melihat lebih banyak respon positif atau negatif yang disampaikan. Salah satu cara untuk mengkategorikan sebuah tweet di twitter termasuk ke dalam opini positif atau negatif adalah menggunakan analisis sentimen. Penelitian ini akan menggunakan model algoritma naïve bayes classifier sebagai algoritma pengklasifikasian sentimen pada tweet media sosial twitter
+                </br></p>
+                <button><a href="{{ url_for('upload')}}" style="color: white; text-decoration: none;">MULAI</button>
+            </form>
+        </div>
+        <footer class="footer">
+            <p><a href="#"></a>Ikromul Islam, Universitas Trunojoyo Madura</p>
+            <p><a href="#"></a>Copyright &copy 2021</p>
+        </footer>
+    </body>
+</html>

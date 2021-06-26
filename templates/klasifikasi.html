@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Klasifikasi Data</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename ='css/style.css') }}">
+        <style type="text/css">
+        table.scroll {
+            color: #fafafa;
+            border:1px #a9c6c9 solid;
+            background-color: #fafafa;
+            margin-top: 10px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+        table.scroll thead {
+            display:table;
+            width:100%;
+        }
+        table.scroll tbody {
+            display:block;
+            height:290px;
+            overflow:auto;
+            margin-left: auto;
+            margin-right: auto;
+            width:1000px;
+
+        }
+        table.scroll tbody tr {
+            display:table;
+            color: black;
+            width:100%;
+        }
+        table.scroll th, td {
+            color: black;
+            font-size: 12px;
+            padding:3px;
+        }
+    </style>
+    </head>
+   
+    <body>
+        <div class="container">
+          <h1 align="center">
+            <button style="float: left; margin-top: 15px; margin-right: -60px; background-color:#2979ff; color: #fafafa;
+            border: white 1px solid; border-radius: 3px; width: 70px;"><a href="{{ url_for('upload')}}" style="color: white; text-decoration: none;">Home</button></a>
+          Klasifikasi Data</h1>
+            <form method="POST">
+                <p style="margin-bottom: 5px;">
+                    Proses klasifikasi data dilakukan pada data yang sudah di preprocessing. Data yang digunakan
+                    sebanyak 1250 data dengan pembagian 10% data uji atau sebanyak 125 data dan 90% sebagai data latih
+                    atau sebanyak 1125 data.
+                </p>
+                <input type="submit" value="Mulai Klasifikasi">
+            <form style="background-color: #fafafa">  
+            <table border="1" cellspacing="0" class="scroll">
+                <tr>
+                    <th style="text-align: center;">Tweet</th>
+                    <th style="text-align: center;" width="200px">Label</th>
+                    <th style="text-align: center;" width="200px">Label baru</th>
+                </tr>
+                {% for data in tables %}
+                <tr>
+                    <td style="text-align: left;">{{ data.1 }}</td>
+                    <td style="text-align: center;" width="200px">{{ data.2 }}</td>
+                    <td style="text-align: center;" width="200px">{{ data.3 }}</td>
+                    {% endfor %}
+                </tr>                
+            </table>
+            {{tombol|safe}}
+        </form>
+        </form>
+        </div>  
+        <footer class="footer">
+            <p><a href="#"></a>Ikromul Islam, Universitas Trunojoyo Madura</p>
+            <p><a href="#"></a>Copyright &copy 2021</p>
+        </footer>   	
+    </body>
+</html>

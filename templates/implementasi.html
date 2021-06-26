@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Implementasi Model</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename ='css/style.css') }}">
+    <style type="text/css">
+		table.scroll {
+			color: #fafafa;
+			border:1px #a9c6c9 solid;
+			background-color: #fafafa;
+            margin-top: 15px;
+		}
+		table.scroll thead {
+			display:table;
+			width:100%;
+		}
+		table.scroll tbody {
+			display:block;
+			height:230px;
+			overflow:auto;
+			float:left;
+			width:100%;
+		}
+		table.scroll tbody tr {
+			display:table;
+			color: black;
+			width:100%;
+		}
+		table.scroll th, td {
+			color: black;
+			font-size: 12px;
+			padding:3px;
+		}
+	</style>
+</head>
+<body>
+ 	<div class="container">
+ 		<h1 align="center">
+        <button style="float: left; margin-top: 15px; margin-right: -60px; background-color:#2979ff; color: #fafafa;
+            border: white 1px solid; border-radius: 3px; width: 70px;"><a href="{{ url_for('upload')}}" style="color: white; text-decoration: none;">Home</button></a>Implementasi Model</h1>
+	    <form method="POST">
+	    	<label>Masukkan Topik Yang Ingin Dicari</label><br>
+            <input type="text" name="query" required=""><br>
+
+            <label>Masukkan Jumlah Tweet Maksimal</label><br>
+            <input type="text" name="jumlah" required="">
+
+            <input type="submit" value="Crawling">
+
+    	<form style="background-color: #fafafa">
+    		<table border="1" cellspacing="0" class="scroll">
+    			<tr>
+    				<th style="text-align: center;" width="150px">Id Tweet</th>
+    				<th style="text-align: center;" width="150px">Username</th>
+                    <th style="text-align: center;">Tweet</th>
+                    <th style="text-align: center;" width="100px">Waktu Crawling</th>
+                    <th style="text-align: center;" width="100px">Label</th>
+    			</tr>
+    			{% for data in tables %}
+        		<tr>
+                    <td style="text-align: center;" width="150px">{{ data.0 }}</td>
+        			<td style="text-align: center;" width="150px">{{ data.1 }}</td>
+		            <td style="text-align: center;" >{{ data.2 }}</td>
+                    <td style="text-align: center;" width="100px">{{ data.3 }}</td>
+                    <td style="text-align: center;" width="100px">{{ data.4 }}</td>
+		        	{% endfor %}
+        		</tr>
+    		</table>
+    	</form>
+        <p style="font-size: 14px; margin-top: 5px;">
+            Jumlah data = {{jumlah_data}}
+        </p>
+        </form>
+ 	</div>
+    <footer class="footer">
+            <p><a href="#"></a>Ikromul Islam, Universitas Trunojoyo Madura</p>
+            <p><a href="#"></a>Copyright &copy 2021</p>
+        </footer>
+</body>
+</html>

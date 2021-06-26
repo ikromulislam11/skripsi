@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Tambah Data Slangwords</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename ='css/style.css') }}">
+    </head>
+   
+    <body>
+        <div class="container">
+        <h1>Tambah Data Slangwords</h1>
+        <form action="{{ url_for('update_slangword')}}" method="POST">
+            <label style="margin-left: 430px;">Masukkan Slangword</label><br>
+            <input type="text" name="slangword" required=""><br>
+
+            <label style="margin-left: 430px;">Masukkan Kata Baku</label><br>
+            <input type="text" name="katabaku" required="">
+
+            <button type="submit" name="submit">Tambah Data</button> ><br>
+        </form>
+        </div>
+        <footer class="footer">
+            <p><a href="#"></a>Ikromul Islam, Universitas Trunojoyo Madura</p>
+            <p><a href="#"></a>Copyright &copy 2021</p>
+        </footer>
+    </body>
+</html>

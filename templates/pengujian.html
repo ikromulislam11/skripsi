@@ -1,0 +1,136 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Pengujian Model</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename ='css/style.css') }}">
+        <style type="text/css">
+        table.scroll {
+            color: #fafafa;
+            border:1px #a9c6c9 solid;
+            background-color: #fafafa;
+            margin-top: 10px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+        table.scroll thead {
+            display:table;
+            width:100%;
+        }
+        table.scroll tbody {
+            display:block;
+            height:300px;
+            overflow:auto;
+            margin-left: auto;
+            margin-right: auto;
+            width:1000px;
+
+        }
+        table.scroll tbody tr {
+            display:table;
+            color: black;
+            width:100%;
+        }
+        table.scroll th, td {
+            color: black;
+            font-size: 12px;
+            padding:3px;
+        }
+    </style>
+    </head>
+   
+    <body>
+        <div class="container">
+          <h1 align="center">
+            <button style="float: left; margin-top: 15px; margin-right: -60px; background-color:#2979ff; color: #fafafa;
+            border: white 1px solid; border-radius: 3px; width: 70px;"><a href="{{ url_for('upload')}}" style="color: white; text-decoration: none;">Home</button></a>
+          Pengujian Model</h1>
+            <form method="POST">
+                <p>
+                    Proses pengujian dilakukan untuk mengetahui seberapa akurat hasil klasifikasi yang dihasilkan oleh model pengklasifikasian. Pengujian model menggunakan metode k-fold cross validation denga nilai k = 10.
+                </p>
+            <form style="background-color: #fafafa">
+                <table border="1" cellspacing="0" class="scroll">
+                <tr>
+                    <th style="text-align: center;" width="100px;">Nilai K</th>
+                    <th style="text-align: center;" width="200px">Akurasi</th>
+                    <th style="text-align: center;" width="200px">Precision</th>
+                    <th style="text-align: center;" width="200px">Recall</th>
+                </tr>
+                <tr>
+                    <td style="text-align: center;" width="100px;">1</td>
+                    <td style="text-align: center;" width="200px;">{{ akurasipersen.0 }}%</td>
+                    <td style="text-align: center;" width="200px">{{ precisionpersen.0 }}%</td>
+                    <td style="text-align: center;" width="200px">{{ recallpersen.0 }}%</td>
+                </tr>
+                <tr>
+                    <td style="text-align: center;" width="100px;">2</td>
+                    <td style="text-align: center;" width="200px;">{{ akurasipersen.1 }}%</td>
+                    <td style="text-align: center;" width="200px">{{ precisionpersen.1 }}%</td>
+                    <td style="text-align: center;" width="200px">{{ recallpersen.1 }}%</td>
+                </tr> 
+                <tr>
+                    <td style="text-align: center;" width="100px;">3</td>
+                    <td style="text-align: center;" width="200px;">{{ akurasipersen.2 }}%</td>
+                    <td style="text-align: center;" width="200px">{{ precisionpersen.2 }}%</td>
+                    <td style="text-align: center;" width="200px">{{ recallpersen.2 }}%</td>
+                </tr> 
+                <tr>
+                    <td style="text-align: center;" width="100px;">4</td>
+                    <td style="text-align: center;" width="200px;">{{ akurasipersen.3 }}%</td>
+                    <td style="text-align: center;" width="200px">{{ precisionpersen.3 }}%</td>
+                    <td style="text-align: center;" width="200px">{{ recallpersen.3 }}%</td>
+                </tr> 
+                <tr>
+                    <td style="text-align: center;" width="100px;">5</td>
+                    <td style="text-align: center;" width="200px;">{{ akurasipersen.4 }}%</td>
+                    <td style="text-align: center;" width="200px">{{ precisionpersen.4 }}%</td>
+                    <td style="text-align: center;" width="200px">{{ recallpersen.4 }}%</td>
+                </tr>
+                <tr>
+                    <td style="text-align: center;" width="100px;">6</td>
+                    <td style="text-align: center;" width="200px;">{{ akurasipersen.5 }}%</td>
+                    <td style="text-align: center;" width="200px">{{ precisionpersen.5 }}%</td>
+                    <td style="text-align: center;" width="200px">{{ recallpersen.5 }}%</td>
+                </tr>
+                <tr>
+                    <td style="text-align: center;" width="100px;">7</td>
+                    <td style="text-align: center;" width="200px;">{{ akurasipersen.6 }}%</td>
+                    <td style="text-align: center;" width="200px">{{ precisionpersen.6 }}%</td>
+                    <td style="text-align: center;" width="200px">{{ recallpersen.6 }}%</td>
+                </tr>
+                <tr>
+                    <td style="text-align: center;" width="100px;">8</td>
+                    <td style="text-align: center;" width="200px;">{{ akurasipersen.7 }}%</td>
+                    <td style="text-align: center;" width="200px">{{ precisionpersen.7 }}%</td>
+                    <td style="text-align: center;" width="200px">{{ recallpersen.7 }}%</td>
+                </tr>
+                <tr>
+                    <td style="text-align: center;" width="100px;">9</td>
+                    <td style="text-align: center;" width="200px;">{{ akurasipersen.8 }}%</td>
+                    <td style="text-align: center;" width="200px">{{ precisionpersen.8 }}%</td>
+                    <td style="text-align: center;" width="200px">{{ recallpersen.8 }}%</td>
+                </tr>
+                <tr>
+                    <td style="text-align: center;" width="100px;">10</td>
+                    <td style="text-align: center;" width="200px;">{{ akurasipersen.9 }}%</td>
+                    <td style="text-align: center;" width="200px">{{ precisionpersen.9 }}%</td>
+                    <td style="text-align: center;" width="200px">{{ recallpersen.9 }}%</td>
+                </tr>
+                <tr>
+                    <td style="text-align: center;" width="100px;">Rata-rata</td>
+                    <td style="text-align: center;" width="200px;">{{ meanakurasi }}%</td>
+                    <td style="text-align: center;" width="200px">{{ meanprecision }}%</td>
+                    <td style="text-align: center;" width="200px">{{ meanrecall }}%</td>
+                </tr>                 
+            </table>
+            <br>
+        <button><a href="{{ url_for('implementasi')}}" style="color: white; text-decoration: none;">Implementasi Model</button>
+        </form>
+        </form>
+        </div>  
+        <footer class="footer">
+            <p><a href="#"></a>Ikromul Islam, Universitas Trunojoyo Madura</p>
+            <p><a href="#"></a>Copyright &copy 2021</p>
+        </footer>   	
+    </body>
+</html>

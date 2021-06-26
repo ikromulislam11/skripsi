@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Crawling Data</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename ='css/style.css') }}">
+    <style type="text/css">
+		table.scroll {
+			color: #fafafa;
+			border:1px #a9c6c9 solid;
+			background-color: #fafafa;
+            margin-top: 15px;
+            margin-left:auto;
+            margin-right:auto;
+		}
+		table.scroll thead {
+			display:table;
+			width:100%;
+		}
+		table.scroll tbody {
+			display:block;
+			height:200px;
+			overflow:auto;
+			float:center;
+			width:100%;
+		}
+		table.scroll tbody tr {
+			display:table;
+			color: black;
+			width:100%;
+		}
+		table.scroll th, td {
+			color: black;
+			font-size: 12px;
+			padding:3px;
+		}
+	</style>
+</head>
+<body>
+ 	<div class="container">
+ 		<h1>Crawling Data</h1>
+	    <form method="POST">
+	    	<label>Masukkan Topik Yang Ingin Dicari</label><br>
+            <input type="text" name="query" required=""><br>
+
+            <label>Masukkan Jumlah Tweet Maksimal</label><br>
+            <input type="text" name="jumlah" required="">
+
+            <input type="submit" value="Crawling"><br>
+
+    	<form style="background-color: #fafafa">
+    		<table border="1" cellspacing="0" class="scroll">
+    			<tr>
+                    {% for col in column_names %}
+                    <th style="width: 100px;">{{col}}</th>
+                    {% endfor %}
+    			</tr>
+    			{% for row in row_data %}
+        		<tr>
+                    {% for col, row_ in zip(column_names, row) %}
+                    <td style="width: 300px;">{{row_}}</td>
+                    {% endfor %}
+        		</tr>
+                {% endfor %}
+    		</table>
+            <p style="font-size: 14px; margin-top: 5px;">
+                Jumlah data = {{jumlah_data}}           {{info}}
+            </p>
+            {{tombol|safe}}
+    	</form>
+        </form>
+ 	</div>
+    <footer class="footer">
+            <p><a href="#"></a>Ikromul Islam, Universitas Trunojoyo Madura</p>
+            <p><a href="#"></a>Copyright &copy 2021</p>
+        </footer>
+</body>
+</html>

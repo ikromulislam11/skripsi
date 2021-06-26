@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Ekstraksi Fitur dan Pembobotan Kata</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename ='css/style.css') }}">
+        <style type="text/css">
+        table.scroll {
+            color: #fafafa;
+            border:1px #a9c6c9 solid;
+            background-color: #fafafa;
+            margin-top: 10px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+        table.scroll thead {
+            display:table;
+            width:100%;
+        }
+        table.scroll tbody {
+            display:block;
+            height:250px;
+            overflow:auto;
+            margin-left: auto;
+            margin-right: auto;
+            width:600px;
+
+        }
+        table.scroll tbody tr {
+            display:table;
+            color: black;
+            width:100%;
+        }
+        table.scroll th, td {
+            color: black;
+            font-size: 12px;
+            padding:3px;
+        }
+    </style>
+    </head>
+   
+    <body>
+        <div class="container">
+          <h1 align="center">Ekstraksi Fitur Dan Pembobotan Kata
+          <button style="float: left; margin-top: 15px; margin-right: -70px; background-color:#2979ff; color: #fafafa;
+            border: white 1px solid; border-radius: 3px; width: 70px;"><a href="{{ url_for('upload')}}" style="color: white; text-decoration: none;">Home</button></a></h1>
+            <form method="POST">
+                <p>
+                    Konsep metode TF-IDF adalah menentukan hubungan suatu kata terhadap dokumen atau kalimat. Term Frequency (TF) digunakan untuk untuk menghitung bobot suatu term/kata dalam suatu kalimat. Semakin banyak jumlah term dalam suatu kalimat, maka semakin besar pula nilai bobotnya. Sedangkan invers document frequency (IDF) digunakan untuk mengurangi nilai bobot suatu term yang sering muncul pada banyak dokumen.
+                </br></p>
+			<input type="submit" value="Ekstraksi Fitur"><br><br>
+            <p style="color: white;">
+                {{notif}}
+            </p>
+            <form style="background-color: #fafafa">
+            {{klasifikasi|safe}}
+        </form>
+        </form>
+        </div>  
+        <footer class="footer">
+            <p><a href="#"></a>Ikromul Islam, Universitas Trunojoyo Madura</p>
+            <p><a href="#"></a>Copyright &copy 2021</p>
+        </footer>   	
+    </body>
+</html>

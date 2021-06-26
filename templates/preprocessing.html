@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Preprocessing</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename ='css/style.css') }}">
+    </head>
+   
+    <body>
+        <div class="container">
+          <h1 align="center">Preprocessing
+            <button style="float: left; margin-top: 15px; margin-right: -70px; background-color:#2979ff; color: #fafafa;
+            border: white 1px solid; border-radius: 3px; width: 70px;"><a href="{{ url_for('upload')}}" style="color: white; text-decoration: none;">Home</button></a></h1>
+            <form method="POST">
+                <p style="margin-bottom: 5px;">Proses-proses yang dilakukan dalam preprocessing adalah sebagai berikut :<br>
+                    1.  Cleansing adalah proses penghapusan url, tanda baca, angka, hashtag, dan username dari hasil crawling data.<br>
+                    2.  Tokenisasi adalah pemotongan kalimat menjadi kata perkata. Data kalimat-kalimat hasil crawling akan dipotong menjadi potongan kata-kata penting tanpa memperhatikan keterkaitan antara kata-kata dalam kalimatnya.<br>
+                    3.  Case folding adalah proses dimana huruf-huruf dalam kalimat atau dokumen disamakan menjadi huruf-huruf kapital semua atau huruf kecil semua.<br>
+                    4.  Konversi Slangword adalah proses proses pengubahan semua kata dalam kalimat atau dokumen menjadi kata baku menggunakan bantuan kamus slangword. Tahap ini akan mengecek kata-kata apakah terdapat dalam kamus slangword atau tidak. Jika ditemukan kata tidak baku sesuai kamus slangword, kemudian akan diubah menjadi kata baku sesuai kamus slangword.<br>
+                    5.  Stemming adalah proses pengubahan kata dalam kalimat atau dokumen menjadi kata dasar semua dengan menghilangkan imbuhan-imbuhannya. Imbuhan pada setiap kata akan dihilangkan sesuai algoritma yang digunakan. Proses stemming menggunakan bantuan dari library sastrawi dengan algoritma nazief dan adriani.<br>
+                    6.  Stopword adalah proses menghilangkan kata-kata yang tidak memiliki makna. Proses stopword menggunakan bantuan dari data stopword yang sudah dibuat sebelumnya.</p>
+			<input type="submit" name="submit" value="Preprocessing"><a href="{{ url_for('preprocess')}}" style="color: white; text-decoration: none;"><br>
+            <p style="margin-bottom: 5px; margin-top: 5px;">
+                {{notif}}
+            </p>
+            <button style="height: 35px; font-size: 15px;"><a href="{{ url_for('data_preprocessing')}}" style="color: white; text-decoration: none;">Lihat Data Preprocessing</button>
+            </form>
+        </div>   
+        <footer class="footer">
+            <p><a href="#"></a>Ikromul Islam, Universitas Trunojoyo Madura</p>
+            <p><a href="#"></a>Copyright &copy 2021</p>
+        </footer>  	
+    </body>
+</html>

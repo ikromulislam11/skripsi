@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Data Stopwords</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename ='css/style.css') }}">
+        <style type="text/css">
+        table.scroll {
+            color: #fafafa;
+            border:1px #a9c6c9 solid;
+            background-color: #fafafa;
+            margin-top: 15px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+        table.scroll thead {
+            display:table;
+            width:1000px;
+        }
+        table.scroll tbody {
+            display:block;
+            height:400px;
+            overflow:auto;
+            float:left;
+            width:1000px;
+        }
+        table.scroll tbody tr {
+            display:table;
+            color: black;
+            width:1000px;
+        }
+        table.scroll th, td {
+            color: black;
+            font-size: 12px;
+            padding:3px;
+            width: 1000px;
+        }
+    </style>
+    </head>
+   
+    <body>
+        <div class="container">
+        <h1>Data Stopwords</h1>
+        <form>
+        <form>
+            <table border="1" cellspacing="0" class="scroll">  
+            <tr>
+                <th style="text-align: center;" width="150px">Stopword</th>
+            </tr>
+            <tr>
+                <td>
+                {% for row in data %} 
+                {{ row }},
+                {% endfor %}
+                </td>
+
+            </tr>
+            </table>
+            <button style="margin-top: 15px"><a href="{{ url_for('update_stopword')}}" style="color: white; text-decoration: none;">Tambah Data</button>
+        </form>
+        </form>
+        </div>
+        <footer class="footer">
+            <p><a href="#"></a>Ikromul Islam, Universitas Trunojoyo Madura</p>
+            <p><a href="#"></a>Copyright &copy 2021</p>
+        </footer>
+    </body>
+</html>

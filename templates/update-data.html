@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Home</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename ='css/style.css') }}">
+    </head>
+   
+    <body>
+        <div class="container">
+        <h1>Ubah Label Data</h1>
+        <form action="url_for('edit', id_tweet" method="post">
+            <div>
+               <input type="hidden" name="id_tweet"  value="{{data[0]}}"/>
+            </div>
+            <div>
+               <label style="font-size: 16px; text-align: center; ">Label : </label>
+               <select name="label" required style="width: 180px; margin-bottom: 10px; align-items: center;"> <!-- note the name -->
+                    <option value="Positif">Positif</option>
+                    <option value="Negatif">Negatif</option>
+                </select>
+            </div>
+            <button type="submit" id="Submit" name="submit">Edit Label</button>
+        </form>
+        </div>
+        <footer class="footer">
+            <p><a href="#"></a>Ikromul Islam, Universitas Trunojoyo Madura</p>
+            <p><a href="#"></a>Copyright &copy 2021</p>
+        </footer>
+    </body>
+</html>
