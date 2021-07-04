@@ -19,7 +19,7 @@ from Sastrawi.Stemmer.StemmerFactory import StemmerFactory
 import json
 import openpyxl
 from sklearn.naive_bayes import GaussianNB
-from sklearn.model_selection import train_test_split
+from sklearn.model_selection import train_test_split, cross_val_predict
 from sklearn.metrics import classification_report, confusion_matrix, accuracy_score
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer, TfidfTransformer
 from sklearn.model_selection import cross_val_score
@@ -27,10 +27,11 @@ from sklearn.preprocessing import LabelBinarizer
 
 
 application = Flask(__name__)
-application.config['MYSQL_HOST'] = 'localhost'
-application.config['MYSQL_USER'] = 'root'
-application.config['MYSQL_PASSWORD'] = ''
-application.config['MYSQL_DB'] = 'sentimen'
+
+application.config['MYSQL_HOST'] = 'sql6.freemysqlhosting.net'
+application.config['MYSQL_USER'] = 'sql6422853'
+application.config['MYSQL_PASSWORD'] = 'jejPy6DdFs'
+application.config['MYSQL_DB'] = 'sql6422853'
 mysql = MySQL(application)
 
 @application.route('/')
@@ -79,10 +80,11 @@ def crawling():
 
 @application.route('/edit/<id_tweet>', methods=['GET','POST'])
 def edit(id_tweet):
-   con = pymysql.connect(host='localhost',
-           user='root',
-           password='',
-           db='sentimen',
+   con = pymysql.connect(host='sql6.freemysqlhosting.net',
+           port = 3306,
+           user='sql6422853',
+           password='jejPy6DdFs',
+           db='sql6422853',
            charset='utf8mb4')
    cur = mysql.connection.cursor()
    cur.execute('SELECT * FROM crawling WHERE id_tweet=%s', (id_tweet,))
@@ -102,10 +104,11 @@ def edit(id_tweet):
 
 @application.route('/lihat-data')
 def lihat_data():
-    con = pymysql.connect(host='localhost',
-           user='root',
-           password='',
-           db='sentimen',
+    con = pymysql.connect(host='sql6.freemysqlhosting.net',
+           port = 3306,
+           user='sql6422853',
+           password='jejPy6DdFs',
+           db='sql6422853',
            charset='utf8mb4')
     cur = mysql.connection.cursor()
     cur.execute("SELECT * FROM crawling")
@@ -118,10 +121,11 @@ def lihat_data():
 
 @application.route('/lihat-data/<id_tweet>', methods=['GET','POST'])
 def hapus_data(id_tweet):
-    con = pymysql.connect(host='localhost',
-           user='root',
-           password='',
-           db='sentimen',
+    con = pymysql.connect(host='sql6.freemysqlhosting.net',
+           port = 3306,
+           user='sql6422853',
+           password='jejPy6DdFs',
+           db='sql6422853',
            charset='utf8mb4')
     cur = mysql.connection.cursor()
     cur.execute("DELETE FROM crawling where id_tweet = %s", (id_tweet,))
@@ -135,10 +139,11 @@ def preprocessing():
 
 @application.route('/data-preprocessing')
 def data_preprocessing():
-    con = pymysql.connect(host='localhost',
-           user='root',
-           password='',
-           db='sentimen',
+    con = pymysql.connect(host='sql6.freemysqlhosting.net',
+           port = 3306,
+           user='sql6422853',
+           password='jejPy6DdFs',
+           db='sql6422853',
            charset='utf8mb4')
     cur = mysql.connection.cursor()
     cur.execute("SELECT * FROM preprocessing")
@@ -151,10 +156,11 @@ def data_preprocessing():
 
 @application.route('/data-preprocessing', methods=['GET','POST'])
 def hapus_preprocessing():
-    con = pymysql.connect(host='localhost',
-           user='root',
-           password='',
-           db='sentimen',
+    con = pymysql.connect(host='sql6.freemysqlhosting.net',
+           port = 3306,
+           user='sql6422853',
+           password='jejPy6DdFs',
+           db='sql6422853',
            charset='utf8mb4')
     try:
        cur = mysql.connection.cursor()
@@ -222,10 +228,11 @@ def update_stopword():
 
 @application.route('/preprocessing-data', methods=['GET', 'POST'])
 def preprocess():
-   con = pymysql.connect(host='localhost',
-           user='root',
-           password='',
-           db='sentimen',
+   con = pymysql.connect(host='sql6.freemysqlhosting.net',
+           port=3306,
+           user='sql6422853',
+           password='jejPy6DdFs',
+           db='sql6422853',
            charset='utf8mb4')
    ambil_data = pd.read_sql_query("SELECT * FROM crawling where label is not null", con)
    df = pd.DataFrame(ambil_data)
@@ -342,10 +349,11 @@ def halaman_tfidf():
 
 @application.route('/halaman-tfidf', methods=['GET','POST'])
 def tfidf():
-   con = pymysql.connect(host='localhost',
-           user='root',
-           password='',
-           db='sentimen',
+   con = pymysql.connect(host='sql6.freemysqlhosting.net',
+           port=3306,
+           user='sql6422853',
+           password='jejPy6DdFs',
+           db='sql6422853',
            charset='utf8mb4')
    ambil_data = pd.read_sql_query("SELECT text_pre FROM preprocessing LIMIT 1250", con)
    df = pd.DataFrame(ambil_data)
@@ -370,10 +378,11 @@ def halamanklasifikasi():
    
 @application.route('/klasifikasi', methods=['GET','POST'])
 def klasifikasi():
-   con = pymysql.connect(host='localhost',
-           user='root',
-           password='',
-           db='sentimen',
+   con = pymysql.connect(host='sql6.freemysqlhosting.net',
+           port = 3306,
+           user='sql6422853',
+           password='jejPy6DdFs',
+           db='sql6422853',
            charset='utf8mb4')
    ambil_data = pd.read_sql_query("SELECT * FROM preprocessing LIMIT 1250", con)
    df = pd.DataFrame(ambil_data)
@@ -406,10 +415,11 @@ def klasifikasi():
 
 @application.route('/pengujian-model', methods=['GET','POST'])
 def hitung_akurasi():
-   con = pymysql.connect(host='localhost',
-           user='root',
-           password='',
-           db='sentimen',
+   con = pymysql.connect(host='sql6.freemysqlhosting.net',
+           port = 3306,
+           user='sql6422853',
+           password='jejPy6DdFs',
+           db='sql6422853',
            charset='utf8mb4')
    ambil_data = pd.read_sql_query("SELECT * FROM preprocessing LIMIT 1250", con)
    df = pd.DataFrame(ambil_data)
@@ -423,6 +433,7 @@ def hitung_akurasi():
    
    lb = LabelBinarizer()
    y_train = np.array([number[0] for number in lb.fit_transform(df['label_pre'])])
+   
       
    akurasi = cross_val_score(model, data_vector, y_train, cv=10)
    akurasibulat = np.around(akurasi, 2)
@@ -466,10 +477,11 @@ def implementasi():
       cur.execute("INSERT IGNORE INTO implementasi(id_tweet_imp, username, text_imp, waktu_imp, label_imp) VALUES (%s,%s,%s, curdate(), NULL)",(a, b, c,))
       mysql.connection.commit()
 
-   con = pymysql.connect(host='localhost',
-           user='root',
-           password='',
-           db='sentimen',
+   con = pymysql.connect(host='sql6.freemysqlhosting.net',
+           port = 3306,
+           user='sql6422853',
+           password='jejPy6DdFs',
+           db='sql6422853',
            charset='utf8mb4')
    
    ambil_data = pd.read_sql_query("SELECT * FROM preprocessing LIMIT 1250", con)
@@ -605,5 +617,6 @@ def implementasi():
 
    return render_template('implementasi.html', tables = hasil, jumlah_data=jumlah_data)
 
+port = int(os.environ.get("PORT", 5000))
 if __name__ == '__main__':
-   application.run(debug=False, host='0.0.0.0')
+   application.run(debug=True, host='0.0.0.0', port=port)
