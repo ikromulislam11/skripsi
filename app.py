@@ -292,7 +292,7 @@ def preprocess():
    df['text'] = df['text'].apply(word_tokenize_wrapper)
 
    def convertToSlangword(tweet):
-       kamus_slangword = eval(open("D:\FD\skripsi\slangword.txt").read()) # Membuka dictionary slangword
+       kamus_slangword = eval(open("ikromulislam11/skripsi/slangword.txt").read()) # Membuka dictionary slangword
        pattern = re.compile(r'\b( ' + '|'.join (kamus_slangword.keys())+r')\b') # Search pola kata (contoh kpn -> kapan)
        content = []
        for kata in tweet:
