@@ -189,7 +189,7 @@ def hapus_preprocessing():
 def slangword():
    #with open("D:\FD\skripsi\slangword.txt") as file:
       #file = file.read().splitlines()
-   file = eval(open("D:\FD\skripsi\slangword.txt").read())
+   file = eval(open("ikromulislam11/skripsi/slangword.txt").read())
    return render_template('slangwords.html', data=file)
 
 @application.route('/data-stopwords')
