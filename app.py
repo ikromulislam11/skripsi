@@ -606,4 +606,4 @@ def implementasi():
    return render_template('implementasi.html', tables = hasil, jumlah_data=jumlah_data)
 
 if __name__ == '__main__':
-   application.run(debug=True)
+   application.run(debug=False, host='0.0.0.0')
