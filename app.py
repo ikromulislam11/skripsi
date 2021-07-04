@@ -189,12 +189,12 @@ def hapus_preprocessing():
 def slangword():
    #with open("D:\FD\skripsi\slangword.txt") as file:
       #file = file.read().splitlines()
-   file = eval(open("ikromulislam11/skripsi/slangword.txt").read())
+   file = eval(open("slangword.txt").read())
    return render_template('slangwords.html', data=file)
 
 @application.route('/data-stopwords')
 def stopword():
-   with open("D:\FD\skripsi\stopword.txt") as file:
+   with open("stopword.txt") as file:
       file = file.read().splitlines()
    return render_template('stopwords.html', data=file)
 
@@ -204,9 +204,9 @@ def update_slangword():
       slang = request.form['slangword']
       katabaku = request.form['katabaku']
 
-      file = eval(open("D:\FD\skripsi\slangword.txt").read())
+      file = eval(open("slangword.txt").read())
       file[slang] = katabaku
-      f = open("D:\FD\skripsi\slangword.txt","w")
+      f = open("slangword.txt","w")
       f.write( str(file) )
       f.close()
       return redirect(url_for('slangword'))
@@ -219,7 +219,7 @@ def update_stopword():
    if request.method == 'POST':
       stop = request.form['form_stopword']
 
-      with open("D:\FD\skripsi\stopword.txt", "a") as f:
+      with open("stopword.txt", "a") as f:
           f.write(", "+ "'"+stop+"'")
 
       return redirect(url_for('stopword'))
@@ -322,7 +322,7 @@ def preprocess():
        return [term_dict[term] for term in document]
    df['text'] = df['text'].apply(get_stemmed_term)
 
-   kamus_stopwords = eval(open("D:\FD\skripsi\stopword.txt").read())
+   kamus_stopwords = eval(open("stopword.txt").read())
    
    #remove stopword pada list token
    def stopwords_removal(words):
@@ -546,7 +546,7 @@ def implementasi():
    df_test['text_imp'] = df_test['text_imp'].apply(word_tokenize_wrapper)
 
    def convertToSlangword(tweet):
-       kamus_slangword = eval(open("D:\FD\skripsi\slangword.txt").read()) # Membuka dictionary slangword
+       kamus_slangword = eval(open("slangword.txt").read()) # Membuka dictionary slangword
        pattern = re.compile(r'\b( ' + '|'.join (kamus_slangword.keys())+r')\b') # Search pola kata (contoh kpn -> kapan)
        content = []
        for kata in tweet:
@@ -576,7 +576,7 @@ def implementasi():
        return [term_dict[term] for term in document]
    df_test['text_imp'] = df_test['text_imp'].apply(get_stemmed_term)
 
-   kamus_stopwords = eval(open("D:\FD\skripsi\stopword.txt").read())
+   kamus_stopwords = eval(open("stopword.txt").read())
    
    #remove stopword pada list token
    def stopwords_removal(words):
