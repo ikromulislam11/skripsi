@@ -620,4 +620,4 @@ def implementasi():
 
 port = int(os.environ.get("PORT", 5000))
 if __name__ == '__main__':
-   application.run(debug=False, host='127.0.0.1', port=port)
+   application.run(debug=True)
